@@ -1,0 +1,82 @@
+{
+  "main": {
+    "name": "Shalin Patel",
+    "description": "Enthusiastic Mathematics student with lots of passion and experience in the computer science realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
+    "image": "profilepic.jpg",
+    "bio": "~Steve Jobs",
+    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "Patel.Shalin@outlook.com",
+    "website": "www.shalin-patel.com",
+    "resumedownload": "/Shalin-Patel-Resume.pdf",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/shalin-patel-911390175/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/patelShalin",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "education": [
+      {
+        "school": "University of Waterloo",
+        "degree": "Bachelors of Mathematics",
+        "graduated": "Sept. 2018 - Apr. 2023",
+        "description": "GPA: 3.3/4.0"
+      }
+    ],
+    "work": [
+      {
+        "company": "Ontario Ministry of Government and Consumer Services",
+        "title": "Infrastructure Technologies Services Co-op",
+        "years": "May 2019 - August 2019",
+        "description1": "• Worked with IBM’s Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
+        "description2": "• Designed an algorithm and developed a GUI to successfully automate the process of user modifications in PIM achieving significantly reduced man-hours and a consistent workflow with less chance of human error.",
+        "description3": "• Optimized SQL queries in SSMS sent through PowerBI reports achieving a 7-fold decrease in time."
+      }
+    ],
+    "project": [
+      {
+        "company": "Identity Manager",
+        "title": "MongoDB | Express.js | React.js | Node.js | JavaScript | HTML5 | CSS3",
+        "description1": "• A full stack MERN web application with a Material UI appearance.",
+        "description2": "• It allows the user to register/login and store their multiple online credentials and safely logout.",
+        "description3": "• Incorporated CRUD functionality, the use of React hooks, context and JWT authentication."
+      },
+      {
+        "company": "Astro",
+        "title": "Django | Python | JavaScript | HTML5 | CSS3",
+        "description1": "• Innovated a Facebook-type application directed towards youth with a space-theme.",
+        "description2": "• Focused on making an elegant, user-friendly interface by using Django for CRUD functionality.",
+        "description3": "• Uploaded on pythonanywhere.com, capturing a web traffic of 674 within the first two months."
+      },
+      {
+        "company": "Dog or Cat",
+        "title": "Python | Tableau | Pandas | MatPlotLib | Scikit-Learn | Tensorflow",
+        "description1": "• Program that successfully differentiates between pictures of cats and dogs with an 86% accuracy.",
+        "description2": "• Inspired by reCAPTCHA when signing up for a website to recreate a similar algorithm with animals.",
+        "description3": "• • Created a Tableau worksheet to visualize the results and further improve the accuracy to 88%."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Python, C, C++, JavaScript, Bash, HTML5, CSS3, Git, Tableau",
+        "level": "90%"
+      },
+      {
+        "name": "ReactJs, Java, SQL",
+        "level": "70%"
+      },
+      {
+        "name": "MongoDB, Express.js, Node.js, Django,",
+        "level": "60%"
+      }
+    ]
+  }
+}
