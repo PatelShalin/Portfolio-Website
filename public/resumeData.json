@@ -1,7 +1,7 @@
 {
   "main": {
     "name": "Shalin Patel",
-    "description": "Enthusiastic Mathematics student with lots of passion and experience in the computer science realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
+    "description": "Enthusiastic Computer Science student with lots of passion and experience in the computer science realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
     "image": "profilepic.jpg",
     "bio": "~Steve Jobs",
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
@@ -26,9 +26,9 @@
     "education": [
       {
         "school": "University of Waterloo",
-        "degree": "Bachelors of Mathematics",
+        "degree": "Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "GPA: 3.3/4.0"
+        "description": "Major GPA: 3.8/4.0"
       }
     ],
     "work": [
