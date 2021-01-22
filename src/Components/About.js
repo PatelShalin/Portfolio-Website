@@ -21,7 +21,7 @@ class About extends Component {
             />
           </div>
           <div className="nine columns main-col">
-            <h2>Stay Hungry. Stay Foolish.</h2>
+            <h2>To improve is to change; to perfect is to change often.</h2>
 
             <p>{bio}</p>
             <div className="row">

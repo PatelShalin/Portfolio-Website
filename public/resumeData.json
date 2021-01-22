@@ -3,7 +3,7 @@
     "name": "Shalin Patel",
     "description": "Enthusiastic Computer Science student with lots of passion and experience in the computer science realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
     "image": "profilepic.jpg",
-    "bio": "~Steve Jobs",
+    "bio": "~Winston Churchill",
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
     "email": "Patel.Shalin@outlook.com",
     "website": "www.shalin-patel.com",
@@ -11,7 +11,7 @@
     "social": [
       {
         "name": "linkedin",
-        "url": "https://www.linkedin.com/in/shalin-patel-911390175/",
+        "url": "https://www.linkedin.com/in/shalin1patel/",
         "className": "fa fa-linkedin"
       },
       {
@@ -28,12 +28,27 @@
         "school": "University of Waterloo",
         "degree": "Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "Major GPA: 3.8/4.0"
+        "description": "Currently taking CS 370: Numerical Computation"
       }
     ],
     "work": [
       {
-        "company": "Ontario Ministry of Government and Consumer Services",
+        "company": "Personifi AI",
+        "title": "Software Engineer",
+        "years": "January 2021 - Present",
+        "description1": "• Currently working on consumer Android application using Java, and creating API endpoints using Flask."
+      },
+      {
+        "company": "Doppl",
+        "title": "Software Developer",
+        "years": "May 2020 - August 2020",
+        "description1": "• Implemented a route optimization algorithm in C++ similar to the Travelling Salesman Problem, achieving O(nlog(n)) runtime for the average client use case.",
+        "description2": "• Created a consumer application for 1000+ users using React-Native, ApolloGraphQL, and Golang.",
+        "description3": "• Constructed a client front-end for asset tracking and routing using React and tested using Jest.",
+        "description4": "• Developed an admin dashboard that allows CRUD functionality for back-end routes using MERN stack."
+      },
+      {
+        "company": "Ontario MGCS",
         "title": "Infrastructure Technologies Services Co-op",
         "years": "May 2019 - August 2019",
         "description1": "• Worked with IBM’s Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
@@ -42,6 +57,14 @@
       }
     ],
     "project": [
+      {
+        "company": "Solar Power Generators",
+        "title": "Python | Pandas | MatPlotLib | Scikit-Learn",
+        "description1": "• Program that successfully predicts power generation and irradiation of solar panels with an 88% accuracy.",
+        "description2": "• Cleaned data using pandas, detecting for missing values and replacing them with their respective means.",
+        "description3": "• Performed EDA using MatPlotLib to graph the data, identify trends and form initial hypotheses.",
+        "description4": "• Implemented DecisionTree and XGBoost Regressor models using Scikit-Learn to validate hypotheses."
+      },
       {
         "company": "Identity Manager",
         "title": "MongoDB | Express.js | React.js | Node.js | JavaScript | HTML5 | CSS3",
@@ -55,22 +78,15 @@
         "description1": "• Innovated a Facebook-type application directed towards youth with a space-theme.",
         "description2": "• Focused on making an elegant, user-friendly interface by using Django for CRUD functionality.",
         "description3": "• Uploaded on pythonanywhere.com, capturing a web traffic of 674 within the first two months."
-      },
-      {
-        "company": "Dog or Cat",
-        "title": "Python | Tableau | Pandas | MatPlotLib | Scikit-Learn | Tensorflow",
-        "description1": "• Program that successfully differentiates between pictures of cats and dogs with an 86% accuracy.",
-        "description2": "• Inspired by reCAPTCHA when signing up for a website to recreate a similar algorithm with animals.",
-        "description3": "• • Created a Tableau worksheet to visualize the results and further improve the accuracy to 88%."
       }
     ],
     "skills": [
       {
-        "name": "Python, C, C++, JavaScript, Bash, HTML5, CSS3, Git, Tableau",
+        "name": "Python, C, C++, JavaScript, ReactJs, Java, SQL, Bash, Git",
         "level": "90%"
       },
       {
-        "name": "ReactJs, Java, SQL",
+        "name": "",
         "level": "70%"
       },
       {
