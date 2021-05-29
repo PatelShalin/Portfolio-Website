@@ -28,19 +28,27 @@
         "school": "University of Waterloo",
         "degree": "Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "Currently taking CS 370: Numerical Computation"
+        "description": "Currently taking CS 350: Operating Systems"
       }
     ],
     "work": [
       {
-        "company": "Personifi AI",
+        "company": "PagerDuty",
+        "title": "Software Engineering Intern",
+        "years": "May 2021 - Present",
+        "description1": "• Mobile Core team"
+      },
+      {
+        "company": "Pronti AI",
         "title": "Software Engineer",
         "years": "January 2021 - Present",
-        "description1": "• Currently working on consumer Android application using Java, and creating API endpoints using Flask."
+        "description1": "• Lead Android developer of flagship Android application using Java following MVP architecture, deployed to 5000+ users.",
+        "description2": "• Created regression testing system for flagship android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of >50 bugs and inefficiencies.",
+        "description3": "• Decreased time taken for backend requests by 80% using Flask and PostgreSQL."
       },
       {
         "company": "Doppl",
-        "title": "Software Developer",
+        "title": "Software Development Intern",
         "years": "May 2020 - August 2020",
         "description1": "• Implemented a route optimization algorithm in C++ similar to the Travelling Salesman Problem, achieving O(nlog(n)) runtime for the average client use case.",
         "description2": "• Created a consumer application for 1000+ users using React-Native, ApolloGraphQL, and Golang.",
