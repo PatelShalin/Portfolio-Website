@@ -28,15 +28,23 @@
         "school": "University of Waterloo",
         "degree": "Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "Currently taking CS 350: Operating Systems"
+        "description": "Currently taking CS 350: Operating Systems and CS 348: Introduction to Database"
       }
     ],
     "work": [
       {
+        "company": "Squarepoint Capital",
+        "title": "Software Engineering Intern",
+        "years": "January 2022 - April 2022",
+        "description1": "• Incoming on the Data Engineering team."
+      },
+      {
         "company": "PagerDuty",
         "title": "Software Engineering Intern",
         "years": "May 2021 - Present",
-        "description1": "• Mobile Core team"
+        "description1": "• Planned and set foundation for Scheduled Maintenance feature on Mobile using Java and Kotlin.",
+        "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 70% increase in efficiency and a 40% decrease in code.",
+        "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting >12 projects."
       },
       {
         "company": "Pronti AI",
