@@ -28,7 +28,7 @@
         "school": "University of Waterloo",
         "degree": "Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "Currently taking CS 350: Operating Systems and CS 348: Introduction to Database"
+        "description": "Major GPA: 3.3"
       }
     ],
     "work": [
@@ -42,37 +42,42 @@
         "company": "PagerDuty",
         "title": "Software Engineering Intern",
         "years": "May 2021 - Present",
-        "description1": "• Planned and set foundation for Scheduled Maintenance feature on Mobile using Java and Kotlin.",
-        "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 70% increase in efficiency and a 40% decrease in code.",
-        "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting >12 projects."
+        "description1": "• Developed significant feature on flagship Mobile application using Java and Kotlin increasing 7-day app retention rate by 34%.",
+        "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 72% increase in efficiency and a 46% decrease in code.",
+        "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting 6 projects."
       },
       {
         "company": "Pronti AI",
-        "title": "Software Engineer",
-        "years": "January 2021 - Present",
-        "description1": "• Lead Android developer of flagship Android application using Java following MVP architecture, deployed to 5000+ users.",
-        "description2": "• Created regression testing system for flagship android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of >50 bugs and inefficiencies.",
-        "description3": "• Decreased time taken for backend requests by 80% using Flask and PostgreSQL."
+        "title": "Software Engineering Intern",
+        "years": "January 2021 - April 2021",
+        "description1": "• Led development of Android application using Java following MVP architecture, active monthly users peaked at 5585.",
+        "description2": "• Implemented regression testing for the above application using Java, JUnit, Mockito, and Espresso allowing for the discovery of 39 bugs and inefficiencies.",
+        "description3": "• Modified microservices using Flask and PostgreSQL improving average endpoint time by 88%."
       },
       {
         "company": "Doppl",
         "title": "Software Development Intern",
         "years": "May 2020 - August 2020",
         "description1": "• Implemented a route optimization algorithm in C++ similar to the Travelling Salesman Problem, achieving O(nlog(n)) runtime for the average client use case.",
-        "description2": "• Created a consumer application for 1000+ users using React-Native, ApolloGraphQL, and Golang.",
-        "description3": "• Constructed a client front-end for asset tracking and routing using React and tested using Jest.",
-        "description4": "• Developed an admin dashboard that allows CRUD functionality for back-end routes using MERN stack."
+        "description2": "• Created a full-stack proof-of-concept using React Native, Apollo GraphQL, and Golang that successfully led to full development.",
+        "description3": "• Contributed to client front-end dashboard using React, Mapbox and tested using Jest.",
+        "description4": "• Developed critical in-production admin dashboard using React, Node, Express, and MongoDB."
       },
       {
         "company": "Ontario MGCS",
         "title": "Infrastructure Technologies Services Co-op",
         "years": "May 2019 - August 2019",
         "description1": "• Worked with IBM’s Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
-        "description2": "• Designed an algorithm and developed a GUI to successfully automate the process of user modifications in PIM achieving significantly reduced man-hours and a consistent workflow with less chance of human error.",
-        "description3": "• Optimized SQL queries in SSMS sent through PowerBI reports achieving a 7-fold decrease in time."
+        "description2": "• Optimized SQL queries in SSMS sent through PowerBI reports improving time taken by 54%."
       }
     ],
     "project": [
+      {
+        "company": "Moodify",
+        "title": "Python | text2emotion | SpotifyAPI | TwitterAPI",
+        "description1": "• A python bot which tweets a generated spotify playlist based on the emotions captured from a tagged tweet using text2emotion.",
+        "description2": "• Won Best Machine Learning Hack at Hacklytics 2021."
+      },
       {
         "company": "Solar Power Generators",
         "title": "Python | Pandas | MatPlotLib | Scikit-Learn",
