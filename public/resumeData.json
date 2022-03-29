@@ -26,22 +26,30 @@
     "education": [
       {
         "school": "University of Waterloo",
-        "degree": "Bachelors of Computer Science",
+        "degree": "Hons. Bachelors of Computer Science",
         "graduated": "Sept. 2018 - Apr. 2023",
-        "description": "Major GPA: 3.3"
+        "description1": "Dean’s List - Winter 2020",
+        "description2": "President’s Scholarship of Distinction"
       }
     ],
     "work": [
       {
+        "company": "Amazon - AWS",
+        "title": "Incoming Software Development Engineering Intern",
+        "years": "May - August 2022"
+      },
+      {
         "company": "Squarepoint Capital",
         "title": "Software Engineering Intern",
-        "years": "January 2022 - April 2022",
-        "description1": "• Incoming on the Data Engineering team."
+        "years": "January - April 2022",
+        "description1": "• Developed ETL pipelines to support quant trading strategies across global markets using Python, PostgreSQL, GCP, Nomad and Bamboo.",
+        "description2": "• Built and architected a global search platform for data discovery across on‑prem and cloud clusters using React, FastAPI, Elasticsearch, Kibana, Docker, Kubernetes and GKE supporting regex searching of 97,643+ documents.",
+        "description3": "• Designed a system for asynchronous requests to Elasticsearch using FastAPI, Celery, Flower, Redis, PostgreSQL increasing throughput by 68%."
       },
       {
         "company": "PagerDuty",
         "title": "Software Engineering Intern",
-        "years": "May 2021 - Present",
+        "years": "May - August 2021",
         "description1": "• Developed significant feature on flagship Mobile application using Java and Kotlin increasing 7-day app retention rate by 34%.",
         "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 72% increase in efficiency and a 46% decrease in code.",
         "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting 6 projects."
@@ -49,7 +57,7 @@
       {
         "company": "Pronti AI",
         "title": "Software Engineering Intern",
-        "years": "January 2021 - April 2021",
+        "years": "January - April 2021",
         "description1": "• Led development of Android application using Java following MVP architecture, active monthly users peaked at 5585.",
         "description2": "• Implemented regression testing for the above application using Java, JUnit, Mockito, and Espresso allowing for the discovery of 39 bugs and inefficiencies.",
         "description3": "• Modified microservices using Flask and PostgreSQL improving average endpoint time by 88%."
@@ -57,7 +65,7 @@
       {
         "company": "Doppl",
         "title": "Software Development Intern",
-        "years": "May 2020 - August 2020",
+        "years": "May - August 2020",
         "description1": "• Implemented a route optimization algorithm in C++ similar to the Travelling Salesman Problem, achieving O(nlog(n)) runtime for the average client use case.",
         "description2": "• Created a full-stack proof-of-concept using React Native, Apollo GraphQL, and Golang that successfully led to full development.",
         "description3": "• Contributed to client front-end dashboard using React, Mapbox and tested using Jest.",
@@ -66,7 +74,7 @@
       {
         "company": "Ontario MGCS",
         "title": "Infrastructure Technologies Services Co-op",
-        "years": "May 2019 - August 2019",
+        "years": "May - August 2019",
         "description1": "• Worked with IBM’s Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
         "description2": "• Optimized SQL queries in SSMS sent through PowerBI reports improving time taken by 54%."
       }

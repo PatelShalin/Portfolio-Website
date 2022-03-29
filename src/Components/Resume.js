@@ -11,7 +11,9 @@ class Resume extends Component {
               {education.degree} <span>&bull;</span>
               <em className="date">{education.graduated}</em>
             </p>
-            <p>{education.description}</p>
+            <p>{education.description1}
+              <br></br>
+              {education.description2}</p>
           </div>
         );
       });
@@ -23,15 +25,17 @@ class Resume extends Component {
               {work.title}
               <span>&bull;</span> <em className="date">{work.years}</em>
             </p>
+            {work.description1 && 
             <p>
-              {work.description1}
-              <br></br>
-              {work.description2}
-              <br></br>
-              {work.description3}
-              <br></br>
-              {work.description4}
-            </p>
+            {work.description1}
+            <br></br>
+            {work.description2}
+            <br></br>
+            {work.description3}
+            <br></br>
+            {work.description4}
+          </p>}
+            
           </div>
         );
       });
