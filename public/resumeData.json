@@ -34,9 +34,12 @@
     ],
     "work": [
       {
-        "company": "Amazon - AWS",
-        "title": "Incoming Software Development Engineering Intern",
-        "years": "May - August 2022"
+        "company": "AWS - Managed Workflows for Apache Airflow",
+        "title": "Software Development Engineering Intern",
+        "years": "May - August 2022",
+        "description1": "• Spearheaded the reduction of customer tickets and escalations by approximately 13%, targetting the problem statement towards reducing stuck/failed tasks & DAG issues.",
+        "description2": "• Modelled log parsing and analyzing architectures; implemented in AWS Console using CloudWatch, CDK, React, Node.js allowing for quick debugging for 100K+ MWAA Environments.",
+        "description3": "• Collaborated in the design of a Data Warehouse for key metrics and insights aggregated across MWAA Environments allowing for future Exploratory Data Analysis, incorporating Data Persistence and Streaming."
       },
       {
         "company": "Squarepoint Capital",
