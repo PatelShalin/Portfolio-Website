@@ -1,7 +1,7 @@
 {
   "main": {
     "name": "Shalin Patel",
-    "description": "Enthusiastic Computer Science student with lots of passion and experience in the computer science realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
+    "description": "Enthusiastic Computer Science student with lots of passion and experience in the Software Engineering realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
     "image": "profilepic.jpg",
     "bio": "~Winston Churchill",
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
@@ -26,13 +26,31 @@
     "education": [
       {
         "school": "University of Waterloo",
-        "degree": "Hons. Bachelors of Computer Science",
-        "graduated": "Sept. 2018 - Apr. 2023",
-        "description1": "Dean’s List - Winter 2020",
-        "description2": "President’s Scholarship of Distinction"
+        "degree": "Honours Bachelors of Computer Science",
+        "graduated": "September 2018 - April 2023",
+        "description1": "Dean's List - Winter 2020",
+        "description2": "President's Scholarship of Distinction"
       }
     ],
     "work": [
+      {
+        "company": "Astronomer",
+        "title": "Software Engineer",
+        "years": "May 2023 - January 2024",
+        "description1": "• Implemented microservice and front-end logic for trial-based onboarding, leading to a $73,000 revenue boost in 2 months, using Golang, Gin, Typescript, React, and PostgreSQL.",
+        "description2": "• Overhauled billing architecture using Airflow and Azure Blob Storage to introduce fault tolerance, data reconciliation, and reduced invoice generation errors by 60%.",
+        "description3": "• Developed endpoints and refined database models with a Test-Driven Development mindset, resulting in the release of public beta endpoints, using Golang, Gin, and PostgreSQL.",
+        "description4": "• Collaborated with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, contributing to the generation of over $230,000 in sales."
+      },
+      {
+        "company": "Pronti AI",
+        "title": "Technical Lead",
+        "years": "January 2021 - April 2022",
+        "description1": "• Led development of flagship Android application with 1M+ downloads and 41,000 monthly active users using Java and following the MVP architecture.",
+        "description2": "• Engineered an asynchronous request architecture for user onboarding, decreasing the onboarding pipeline duration by 38%, using Flask, Celery, Redis, and AWS EC2.",
+        "description3": "• Optimized the backend infrastructure using Flask, PostgreSQL, AWS (S3, EC2), yielding 54% reduction in server-side latency.",
+        "description4": "• Implemented regression testing for Android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of more than 112 bugs and inefficiencies."
+      },
       {
         "company": "AWS - Managed Workflows for Apache Airflow",
         "title": "Software Development Engineering Intern",
@@ -46,7 +64,7 @@
         "title": "Software Engineering Intern",
         "years": "January - April 2022",
         "description1": "• Developed ETL pipelines to support quant trading strategies across global markets using Python, PostgreSQL, GCP, Nomad and Bamboo.",
-        "description2": "• Built and architected a global search platform for data discovery across on‑prem and cloud clusters using React, FastAPI, Elasticsearch, Kibana, Docker, Kubernetes and GKE supporting regex searching of 97,643+ documents.",
+        "description2": "• Built and architected a global search platform for data discovery across on-prem and cloud clusters using React, FastAPI, Elasticsearch, Kibana, Docker, Kubernetes and GKE supporting regex searching of 97,643+ documents.",
         "description3": "• Designed a system for asynchronous requests to Elasticsearch using FastAPI, Celery, Flower, Redis, PostgreSQL increasing throughput by 68%."
       },
       {
@@ -56,14 +74,6 @@
         "description1": "• Developed significant feature on flagship Mobile application using Java and Kotlin increasing 7-day app retention rate by 34%.",
         "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 72% increase in efficiency and a 46% decrease in code.",
         "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting 6 projects."
-      },
-      {
-        "company": "Pronti AI",
-        "title": "Software Engineering Intern",
-        "years": "January - April 2021",
-        "description1": "• Led development of Android application using Java following MVP architecture, active monthly users peaked at 5585.",
-        "description2": "• Implemented regression testing for the above application using Java, JUnit, Mockito, and Espresso allowing for the discovery of 39 bugs and inefficiencies.",
-        "description3": "• Modified microservices using Flask and PostgreSQL improving average endpoint time by 88%."
       },
       {
         "company": "Doppl",
@@ -78,7 +88,7 @@
         "company": "Ontario MGCS",
         "title": "Infrastructure Technologies Services Co-op",
         "years": "May - August 2019",
-        "description1": "• Worked with IBM’s Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
+        "description1": "• Worked with IBM's Privileged Identity Manager to handle access management for the secure data servers at the Data Center Operations sector in MGCS.",
         "description2": "• Optimized SQL queries in SSMS sent through PowerBI reports improving time taken by 54%."
       }
     ],
