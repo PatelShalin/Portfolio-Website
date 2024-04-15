@@ -44,7 +44,7 @@
       },
       {
         "company": "Pronti AI",
-        "title": "Technical Lead",
+        "title": "Software Engineer",
         "years": "January 2021 - April 2022",
         "description1": "• Led development of flagship Android application with 1M+ downloads and 41,000 monthly active users using Java and following the MVP architecture.",
         "description2": "• Engineered an asynchronous request architecture for user onboarding, decreasing the onboarding pipeline duration by 38%, using Flask, Celery, Redis, and AWS EC2.",
