@@ -34,22 +34,21 @@
     ],
     "work": [
       {
+        "company": "Coalition, Inc.",
+        "title": "Software Engineer - Backend",
+        "years": "February 2024 - Present",
+        "description1": "• Spearheaded the Renewals Canadian expansion, collaborating cross functionally to ensure compliance with regional regulations, resulting in 839 policy renewals and $2.9mm (GWP).",
+        "description2": "• Developed the 'Schedule A Bind' feature, scheduling over 2,639 quotes to be bound, which resulted in a 29% reduction in P99 latency and a 1.1% increase in 30-day availability.",
+        "description3": "• Partnered with the underwriting team to design and implement an initial Pricing Algorithm Versioning and Deployment system, leveraging Go-plugins, gRPC, and FastAPI."
+      },
+      {
         "company": "Astronomer",
-        "title": "Software Engineer",
+        "title": "Software Engineer - Control Plane",
         "years": "May 2023 - January 2024",
         "description1": "• Implemented microservice and front-end logic for trial-based onboarding, leading to a $73,000 revenue boost in 2 months, using Golang, Gin, Typescript, React, and PostgreSQL.",
         "description2": "• Overhauled billing architecture using Airflow and Azure Blob Storage to introduce fault tolerance, data reconciliation, and reduced invoice generation errors by 60%.",
         "description3": "• Developed endpoints and refined database models with a Test-Driven Development mindset, resulting in the release of public beta endpoints, using Golang, Gin, and PostgreSQL.",
         "description4": "• Collaborated with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, contributing to the generation of over $230,000 in sales."
-      },
-      {
-        "company": "Pronti AI",
-        "title": "Software Engineer",
-        "years": "January 2021 - April 2022",
-        "description1": "• Led development of flagship Android application with 1M+ downloads and 41,000 monthly active users using Java and following the MVP architecture.",
-        "description2": "• Engineered an asynchronous request architecture for user onboarding, decreasing the onboarding pipeline duration by 38%, using Flask, Celery, Redis, and AWS EC2.",
-        "description3": "• Optimized the backend infrastructure using Flask, PostgreSQL, AWS (S3, EC2), yielding 54% reduction in server-side latency.",
-        "description4": "• Implemented regression testing for Android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of more than 112 bugs and inefficiencies."
       },
       {
         "company": "AWS - Managed Workflows for Apache Airflow",
@@ -66,6 +65,15 @@
         "description1": "• Developed ETL pipelines to support quant trading strategies across global markets using Python, PostgreSQL, GCP, Nomad and Bamboo.",
         "description2": "• Built and architected a global search platform for data discovery across on-prem and cloud clusters using React, FastAPI, Elasticsearch, Kibana, Docker, Kubernetes and GKE supporting regex searching of 97,643+ documents.",
         "description3": "• Designed a system for asynchronous requests to Elasticsearch using FastAPI, Celery, Flower, Redis, PostgreSQL increasing throughput by 68%."
+      },
+      {
+        "company": "Pronti AI",
+        "title": "Software Engineer",
+        "years": "January 2021 - December 2021",
+        "description1": "• Led development of flagship Android application with 1M+ downloads and 41,000 monthly active users using Java and following the MVP architecture.",
+        "description2": "• Engineered an asynchronous request architecture for user onboarding, decreasing the onboarding pipeline duration by 38%, using Flask, Celery, Redis, and AWS EC2.",
+        "description3": "• Optimized the backend infrastructure using Flask, PostgreSQL, AWS (S3, EC2), yielding 54% reduction in server-side latency.",
+        "description4": "• Implemented regression testing for Android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of more than 112 bugs and inefficiencies."
       },
       {
         "company": "PagerDuty",
