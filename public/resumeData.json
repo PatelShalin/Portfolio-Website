@@ -16,7 +16,7 @@
       },
       {
         "name": "github",
-        "url": "https://github.com/patelShalin",
+        "url": "https://github.com/PatelShalin",
         "className": "fa fa-github"
       }
     ]
@@ -37,51 +37,43 @@
         "company": "Coalition, Inc.",
         "title": "Software Engineer - Backend",
         "years": "February 2024 - Present",
-        "description1": "• Spearheaded the Renewals Canadian expansion, collaborating cross functionally to ensure compliance with regional regulations, resulting in 839 policy renewals and $2.9mm (GWP).",
-        "description2": "• Developed the 'Schedule A Bind' feature, scheduling over 2,639 quotes to be bound, which resulted in a 29% reduction in P99 latency and a 1.1% increase in 30-day availability.",
-        "description3": "• Partnered with the underwriting team to design and implement an initial Pricing Algorithm Versioning and Deployment system, leveraging Go-plugins, gRPC, and FastAPI."
+        "description1": "• Developed the schedule a bind feature by writing endpoints in Python and Temporal workflows in Go, scheduling over 220 quotes to be bound resulting in a 15% reduction in the bind system's p95 latency.",
+        "description2": "• Led the renewals Canadian expansion implementing gRPC endpoints in Go and workflows in Temporal to ensure compliance with regional regulations, resulting in $2.9mm gross written premium."
       },
       {
         "company": "Astronomer",
         "title": "Software Engineer - Control Plane",
         "years": "May 2023 - January 2024",
-        "description1": "• Implemented microservice and front-end logic for trial-based onboarding, leading to a $73,000 revenue boost in 2 months, using Golang, Gin, Typescript, React, and PostgreSQL.",
-        "description2": "• Overhauled billing architecture using Airflow and Azure Blob Storage to introduce fault tolerance, data reconciliation, and reduced invoice generation errors by 60%.",
-        "description3": "• Developed endpoints and refined database models with a Test-Driven Development mindset, resulting in the release of public beta endpoints, using Golang, Gin, and PostgreSQL.",
-        "description4": "• Collaborated with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, contributing to the generation of over $230,000 in sales."
+        "description1": "• Launched trial-based on-boarding to serve 110 new clients by building new Go endpoints, modifying relevant front-end components in React, and integrating with Datadog to track incoming requests.",
+        "description2": "• Refactored the billing architecture using Airflow and Azure Blob Storage to introduce fault tolerance, data reconciliation, and retryable DAGs reducing invoice generation errors by 20%.",
+        "description3": "• Worked with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, involving the development of custom endpoints in Go and a custom usage-based billing workflow, generating $230k in top-line revenue."
       },
       {
         "company": "AWS - Managed Workflows for Apache Airflow",
         "title": "Software Development Engineering Intern",
         "years": "May - August 2022",
-        "description1": "• Spearheaded the reduction of customer tickets and escalations by approximately 13%, targetting the problem statement towards reducing stuck/failed tasks & DAG issues.",
-        "description2": "• Modelled log parsing and analyzing architectures; implemented in AWS Console using CloudWatch, CDK, React, Node.js allowing for quick debugging for 100K+ MWAA Environments.",
-        "description3": "• Collaborated in the design of a Data Warehouse for key metrics and insights aggregated across MWAA Environments allowing for future Exploratory Data Analysis, incorporating Data Persistence and Streaming."
+        "description1": "• Implemented a log parser in CloudWatch reducing customer tickets by 10%, targeting failed tasks in Airflow.",
+        "description2": "• Designed a system to ingest data across MWAA Environments into a Data Warehouse using AWS Redshift."
       },
       {
         "company": "Squarepoint Capital",
         "title": "Software Engineering Intern",
         "years": "January - April 2022",
-        "description1": "• Developed ETL pipelines to support quant trading strategies across global markets using Python, PostgreSQL, GCP, Nomad and Bamboo.",
-        "description2": "• Built and architected a global search platform for data discovery across on-prem and cloud clusters using React, FastAPI, Elasticsearch, Kibana, Docker, Kubernetes and GKE supporting regex searching of 97,643+ documents.",
-        "description3": "• Designed a system for asynchronous requests to Elasticsearch using FastAPI, Celery, Flower, Redis, PostgreSQL increasing throughput by 68%."
+        "description1": "• Wrote ETL pipelines in Python and deployed using Nomad to support 13+ quantitative trading strategies.",
+        "description2": "• Designed an asynchronous search platform to support regex searching of 100k+ documents."
       },
       {
         "company": "Pronti AI",
         "title": "Software Engineer",
         "years": "January 2021 - December 2021",
-        "description1": "• Led development of flagship Android application with 1M+ downloads and 41,000 monthly active users using Java and following the MVP architecture.",
-        "description2": "• Engineered an asynchronous request architecture for user onboarding, decreasing the onboarding pipeline duration by 38%, using Flask, Celery, Redis, and AWS EC2.",
-        "description3": "• Optimized the backend infrastructure using Flask, PostgreSQL, AWS (S3, EC2), yielding 54% reduction in server-side latency.",
-        "description4": "• Implemented regression testing for Android application using Java, JUnit, Mockito, and Espresso allowing for the discovery of more than 112 bugs and inefficiencies."
+        "description1": "• Led the development of a flagship Android application with 1M+ downloads and 41k monthly active users."
       },
       {
         "company": "PagerDuty",
         "title": "Software Engineering Intern",
         "years": "May - August 2021",
-        "description1": "• Developed significant feature on flagship Mobile application using Java and Kotlin increasing 7-day app retention rate by 34%.",
-        "description2": "• Implemented and designed architecture for endpoint aggregators written in Scala achieving a 72% increase in efficiency and a 46% decrease in code.",
-        "description3": "• Formed dashboards in Sisense and tracked metrics in various features to obtain data directly impacting 6 projects."
+        "description1": "• Customized dashboards in Sisense to track retention rate and crash rate for 7 screens, which were reviewed at weekly operations meetings and led to the discovery of 8 actionable tickets.",
+        "description2": "• Developed maintenance window feature on Android application using Java and Kotlin, collaborating with a cross-functional team comprised of designers, product managers, and engineers."
       },
       {
         "company": "Doppl",
