@@ -1,0 +1,748 @@
+/* ===================================================================
+ * Orb Theme — dark glass overhaul
+ * Loads AFTER default/layout/media-queries so it wins ties.
+ * Pairs with js/orbs.js (canvas orb field + scroll reveals).
+ * =================================================================== */
+
+:root {
+  --bg-0: #05060e;
+  --card: rgba(15, 17, 32, 0.55);
+  --line: rgba(148, 163, 255, 0.14);
+  --text-hi: #eef0ff;
+  --text-mid: #b6bce0;
+  --text-low: #7f86ad;
+  --violet: #8b5cf6;
+  --cyan: #22d3ee;
+  --pink: #ec4899;
+  --grad: linear-gradient(100deg, #8b5cf6 0%, #22d3ee 55%, #ec4899 110%);
+  --font-display: 'Space Grotesk', 'opensans-bold', sans-serif;
+  --font-body: 'Inter', 'opensans-regular', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+/* ---------------- base ---------------- */
+
+html {
+  background: var(--bg-0);
+}
+body {
+  /* Must stay transparent: an opaque body background paints ABOVE the
+     negative-z-index orb canvas and would hide it entirely. */
+  background: transparent;
+  font-family: var(--font-body);
+  color: var(--text-mid);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-hi);
+}
+p {
+  color: var(--text-mid);
+}
+a, a:visited {
+  color: var(--cyan);
+}
+a:hover, a:focus {
+  color: #fff;
+}
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+  color: #fff;
+}
+::-moz-selection {
+  background: rgba(139, 92, 246, 0.45);
+  color: #fff;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07080f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4c3a8f, #155e75);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6d51c9, #0e7490);
+}
+
+/* ---------------- injected chrome (js/orbs.js) ---------------- */
+
+#orb-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+#bg-vignette {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(139, 92, 246, 0.06), transparent 60%),
+    radial-gradient(140% 120% at 50% 55%, transparent 55%, rgba(2, 3, 8, 0.6) 100%);
+}
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(34, 211, 238, 0.03) 40%, transparent 65%);
+  will-change: transform;
+}
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 300;
+  background: var(--grad);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.8);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* ---------------- scroll reveal ----------------
+   Hidden state only applies when orbs.js has booted (html.orbjs),
+   so content is never lost if JS dies. */
+
+.orbjs .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1),
+    filter 0.8s ease;
+  will-change: opacity, transform, filter;
+}
+.orbjs .reveal.in-view {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------------- navigation ---------------- */
+
+ul#nav li a {
+  color: var(--text-mid);
+  font-family: var(--font-display);
+}
+ul#nav li a:hover {
+  color: #fff;
+}
+ul#nav li.current a {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--cyan);
+}
+
+@media screen and (min-width: 769px) {
+  #nav-wrap {
+    width: auto;
+    left: 50%;
+    top: 16px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding: 2px 14px;
+    border-radius: 999px;
+    background: rgba(10, 12, 26, 0.55);
+    border: 1px solid var(--line);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(3, 4, 12, 0.45);
+  }
+  #nav-wrap.opaque {
+    background-color: rgba(10, 12, 26, 0.78);
+  }
+}
+
+/* ---------------- hero / header ---------------- */
+
+header {
+  background: transparent;
+}
+header .banner-text h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: none;
+  background: var(--grad);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text-hi);
+  -webkit-animation: gradient-pan 9s ease-in-out infinite alternate;
+  animation: gradient-pan 9s ease-in-out infinite alternate;
+  padding-bottom: 6px;
+}
+header .banner-text h3 {
+  font-family: var(--font-body);
+  color: var(--text-mid);
+  text-shadow: none;
+  width: 72%;
+  font-size: 17px;
+  line-height: 1.9;
+}
+header .banner-text hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 255, 0.35), transparent);
+}
+
+.hero-status {
+  display: inline-block;
+  padding: 9px 18px;
+  margin-bottom: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 255, 0.2);
+  background: rgba(15, 17, 32, 0.55);
+  color: var(--text-mid);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.hero-status .pulse-dot {
+  display: inline-block;
+  vertical-align: middle;
+  width: 8px;
+  height: 8px;
+  margin: -2px 10px 0 0;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55);
+  -webkit-animation: pulse 2.2s infinite;
+  animation: pulse 2.2s infinite;
+}
+
+/* staged entrance for hero children */
+.orbjs header .banner-text > * {
+  -webkit-animation: hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.orbjs header .banner-text > *:nth-child(2) { -webkit-animation-delay: 0.12s; animation-delay: 0.12s; }
+.orbjs header .banner-text > *:nth-child(3) { -webkit-animation-delay: 0.24s; animation-delay: 0.24s; }
+.orbjs header .banner-text > *:nth-child(4) { -webkit-animation-delay: 0.34s; animation-delay: 0.34s; }
+.orbjs header .banner-text > *:nth-child(5) { -webkit-animation-delay: 0.44s; animation-delay: 0.44s; }
+
+header .social {
+  text-shadow: none;
+}
+header .social li {
+  margin: 0 10px;
+}
+header .social li a {
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  line-height: 54px;
+  font-size: 22px;
+  text-align: center;
+  border-radius: 50%;
+  color: var(--text-mid);
+  border: 1px solid var(--line);
+  background: rgba(15, 17, 32, 0.55);
+  transition: all 0.3s ease;
+}
+header .social li a:hover {
+  color: #fff;
+  -webkit-transform: translateY(-4px);
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.7);
+  box-shadow: 0 10px 34px rgba(139, 92, 246, 0.35);
+}
+
+header .scrolldown a {
+  color: var(--text-low);
+  -webkit-animation: floaty 2.4s ease-in-out infinite;
+  animation: floaty 2.4s ease-in-out infinite;
+}
+header .scrolldown a:hover {
+  color: var(--cyan);
+}
+
+/* ---------------- about ---------------- */
+
+#about {
+  background: transparent;
+}
+#about h2 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1.4;
+  background: linear-gradient(100deg, #c7d2fe, #67e8f9 60%, #f0abfc 115%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text-hi);
+}
+#about .contact-details h2 {
+  font-size: 20px;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--text-hi);
+}
+#about p {
+  color: var(--text-mid);
+}
+#about p.address span {
+  color: var(--text-mid);
+}
+#about .profile-pic {
+  padding: 4px;
+  background: var(--grad);
+  box-shadow: 0 0 44px rgba(139, 92, 246, 0.35);
+}
+#about .download .button,
+#about .download .button:visited {
+  background: var(--grad);
+  background-size: 160% 100%;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35);
+  transition: all 0.3s ease;
+}
+#about .download .button:hover,
+#about .download .button:focus {
+  background: var(--grad);
+  background-size: 160% 100%;
+  background-position: 100% 0;
+  color: #fff;
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 42px rgba(139, 92, 246, 0.5);
+}
+
+/* ---------------- resume section shell ---------------- */
+
+#resume {
+  background: transparent;
+}
+#resume .section-block {
+  border-bottom: none;
+  margin-bottom: 64px;
+  padding-bottom: 0;
+}
+#resume .section-head {
+  margin-bottom: 44px;
+}
+#resume h1 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 6px;
+}
+#resume h1 span {
+  border-bottom: none;
+  padding-bottom: 0;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--cyan);
+}
+#resume .section-head:after {
+  content: '';
+  display: block;
+  width: 68px;
+  height: 2px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background: var(--grad);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  transition: -webkit-transform 0.9s 0.25s cubic-bezier(0.2, 0.65, 0.2, 1);
+  transition: transform 0.9s 0.25s cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+#resume .section-head.in-view:after,
+html:not(.orbjs) #resume .section-head:after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+/* ---------------- glass cards ---------------- */
+
+.glass-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 28px 30px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(135deg, rgba(139, 92, 246, 0.45), rgba(34, 211, 238, 0.12) 40%, rgba(236, 72, 153, 0.28)) border-box;
+  box-shadow: 0 10px 40px rgba(2, 4, 12, 0.45);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.glass-card:hover {
+  -webkit-transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 60px rgba(2, 4, 12, 0.6),
+    0 0 0 1px rgba(139, 92, 246, 0.25),
+    0 0 48px rgba(139, 92, 246, 0.16);
+}
+#resume .glass-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-hi);
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+.glass-card:hover h3 {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.card-head {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-bottom: 8px;
+}
+.date-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  color: #c7d2fe;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 255, 0.22);
+  background: rgba(99, 102, 241, 0.1);
+}
+#resume .role-line {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: var(--cyan);
+  margin: 0 0 16px;
+}
+#resume .role-line .loc {
+  color: var(--text-low);
+  font-weight: 400;
+}
+#resume ul.points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#resume ul.points li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.75;
+}
+#resume ul.points li:last-child {
+  margin-bottom: 0;
+}
+#resume ul.points li:before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--grad);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  opacity: 0.9;
+}
+
+/* tech pills */
+.tag-row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1;
+  color: var(--text-mid);
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: rgba(148, 163, 255, 0.07);
+  border: 1px solid rgba(148, 163, 255, 0.14);
+  transition: all 0.25s ease;
+}
+.glass-card:hover .tech-pill {
+  border-color: rgba(139, 92, 246, 0.35);
+}
+.tech-pill:hover {
+  color: #fff;
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.6);
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+}
+
+/* ---------------- experience timeline ---------------- */
+
+.timeline {
+  position: relative;
+  padding-left: 46px;
+}
+.timeline:before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(139, 92, 246, 0.55) 5%,
+    rgba(34, 211, 238, 0.45) 50%,
+    rgba(236, 72, 153, 0.45) 95%,
+    transparent
+  );
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: -41px;
+  top: 30px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-0);
+  border: 2px solid var(--violet);
+  box-shadow:
+    0 0 0 4px rgba(139, 92, 246, 0.15),
+    0 0 18px rgba(139, 92, 246, 0.65);
+}
+.timeline-item.in-view .timeline-dot:after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  -webkit-animation: dot-pulse 2.8s ease-out infinite;
+  animation: dot-pulse 2.8s ease-out infinite;
+}
+
+/* ---------------- education + projects ---------------- */
+
+.edu-wrap {
+  max-width: 720px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.project-card h3 {
+  margin-bottom: 14px;
+}
+
+/* ---------------- footer ---------------- */
+
+footer {
+  background: transparent;
+  color: var(--text-low);
+}
+footer .social-links li a {
+  color: var(--text-low);
+  transition: all 0.3s ease;
+}
+footer .social-links li a:hover {
+  color: #fff;
+  text-shadow: 0 0 24px rgba(139, 92, 246, 0.9);
+}
+footer .copyright li,
+footer .copyright li a {
+  color: var(--text-low);
+}
+#go-top a {
+  background: rgba(15, 17, 32, 0.6);
+  border: 1px solid var(--line);
+  color: var(--text-mid);
+  transition: all 0.3s ease;
+}
+#go-top a:hover {
+  background: rgba(139, 92, 246, 0.35);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+/* ---------------- keyframes ---------------- */
+
+@-webkit-keyframes gradient-pan {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+@keyframes gradient-pan {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+@-webkit-keyframes hero-rise {
+  from { opacity: 0; -webkit-transform: translateY(26px); }
+  to { opacity: 1; -webkit-transform: translateY(0); }
+}
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@-webkit-keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+  70% { box-shadow: 0 0 0 11px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+  70% { box-shadow: 0 0 0 11px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+@-webkit-keyframes floaty {
+  0%, 100% { -webkit-transform: translateY(0); }
+  50% { -webkit-transform: translateY(10px); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+@-webkit-keyframes dot-pulse {
+  from { -webkit-transform: scale(1); opacity: 0.8; }
+  to { -webkit-transform: scale(2.3); opacity: 0; }
+}
+@keyframes dot-pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(2.3); opacity: 0; }
+}
+
+/* ---------------- responsive ---------------- */
+
+@media screen and (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  header .banner-text h3 {
+    width: 92%;
+  }
+  .hero-status {
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+  }
+  .timeline {
+    padding-left: 32px;
+  }
+  .timeline:before {
+    left: 6px;
+  }
+  .timeline-dot {
+    left: -31px;
+    top: 26px;
+  }
+  .glass-card {
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+  #resume .glass-card h3 {
+    font-size: 19px;
+  }
+  #resume ul.points li {
+    font-size: 14.5px;
+  }
+  #about h2 {
+    font-size: 24px;
+  }
+}
+
+/* mobile nav (media-queries.css takes over layout below 768px) — reskin the
+   orange hamburger + dropdown panel to match the theme */
+@media only screen and (max-width: 767px) {
+  #nav-wrap > a {
+    background-color: rgba(15, 17, 32, 0.9);
+    border: 1px solid rgba(148, 163, 255, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(3, 4, 12, 0.5), 0 0 18px rgba(139, 92, 246, 0.3);
+  }
+  #nav-wrap:target > ul#nav {
+    background: rgba(10, 12, 26, 0.96);
+    border: 1px solid rgba(148, 163, 255, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(2, 4, 12, 0.7);
+  }
+  ul#nav li {
+    border-bottom: 1px dotted rgba(148, 163, 255, 0.15);
+  }
+}
+
+/* ---------------- reduced motion ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .orbjs .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  #resume .section-head:after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    transition: none;
+  }
+  .orbjs header .banner-text > *,
+  header .banner-text h1,
+  header .scrolldown a,
+  .hero-status .pulse-dot,
+  .timeline-item.in-view .timeline-dot:after {
+    -webkit-animation: none;
+    animation: none;
+  }
+}

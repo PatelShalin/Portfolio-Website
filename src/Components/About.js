@@ -13,14 +13,14 @@ class About extends Component {
     return (
       <section id="about">
         <div className="row">
-          <div className="three columns">
+          <div className="three columns reveal">
             <img
               className="profile-pic"
               src={profilepic}
               alt="Shalin Patel Profile Pic"
             />
           </div>
-          <div className="nine columns main-col">
+          <div className="nine columns main-col reveal">
             <h2>To improve is to change; to perfect is to change often.</h2>
 
             <p>{bio}</p>

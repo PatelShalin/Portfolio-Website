@@ -1,7 +1,8 @@
 {
   "main": {
     "name": "Shalin Patel",
-    "description": "Enthusiastic Computer Science student with lots of passion and experience in the Software Engineering realm. Excellent programming skills in multiple languages and a strong background in how to work as a team with admirable communication skills.",
+    "description": "Co-founder & CEO of OnePatch (YC F26) — building AI agents for observability and incident response. Previously engineering at Pocus, Moment, Coalition, Astronomer, and AWS.",
+    "status": "Currently building OnePatch (YC F26)",
     "image": "profilepic.jpg",
     "bio": "~Winston Churchill",
     "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
@@ -34,19 +35,50 @@
     ],
     "work": [
       {
-        "company": "Coalition, Inc.",
-        "title": "Software Engineer - Backend",
-        "years": "February 2024 - Present",
+        "company": "OnePatch (YC F26)",
+        "title": "CEO / Co-founder",
+        "years": "April 2026 - Present",
+        "location": "Toronto, ON, Canada",
+        "description1": "• Building AI Agents for observability and incident response. Backed by YC (F26), Pareto Holdings, and Backwards Capital.",
+        "tags": ["AI Agents", "Observability", "Incident Response", "Y Combinator"]
+      },
+      {
+        "company": "Pocus (Acquired by Apollo.io)",
+        "title": "Software Engineer - AI",
+        "years": "March 2025 - December 2025",
+        "location": "New York City, NY, United States",
+        "description1": "• Enriched 300mm+ LinkedIn contacts, achieving 85% average Person and Company enrichment rates using DBT, Starrocks, AWS (S3 & Athena), Braintrust, Temporal, Node.js.",
+        "description2": "• Architected a custom end-to-end data ingestion layer to securely pull in Gong Call Transcript data using Nango, MITMProxy, Kyverno, self-hosted Airbyte, AWS (S3, Athena), DBT, Temporal, Postgres to allow for incremental data refreshes and secure credential storage for 28 customers, ingesting 315k+ calls.",
+        "description3": "• Classified 46mm+ distinct job titles using OpenAI's batch API, Braintrust, Temporal, AWS (S3, Athena), Apache Iceberg, and DBT, allowing for job department and seniority to be used across the app.",
+        "tags": ["Node.js", "DBT", "StarRocks", "Temporal", "AWS", "OpenAI", "Apache Iceberg"]
+      },
+      {
+        "company": "Moment",
+        "title": "Software Engineer",
+        "years": "October 2024 - February 2025",
+        "location": "New York City, NY, United States",
+        "description1": "• Onboarded 3 fixed income data vendors, to increase muni and treasury coverage by 26% via data driven workflows using Airflow, OpenLineage, Python, SQL.",
+        "description2": "• Added support for ladder strategies within the quantitative portfolio optimizer using fixed integer linear programming.",
+        "tags": ["Python", "SQL", "Airflow", "OpenLineage"]
+      },
+      {
+        "company": "Coalition",
+        "title": "Software Engineer",
+        "years": "February 2024 - October 2024",
+        "location": "San Francisco, CA (Remote)",
         "description1": "• Developed the schedule a bind feature by writing endpoints in Python and Temporal workflows in Go, scheduling over 220 quotes to be bound resulting in a 15% reduction in the bind system's p95 latency.",
-        "description2": "• Led the renewals Canadian expansion implementing gRPC endpoints in Go and workflows in Temporal to ensure compliance with regional regulations, resulting in $2.9mm gross written premium."
+        "description2": "• Led the renewals Canadian expansion implementing gRPC endpoints in Go and workflows in Temporal to ensure compliance with regional regulations, resulting in $2.9mm gross written premium.",
+        "tags": ["Python", "Go", "Temporal", "gRPC"]
       },
       {
         "company": "Astronomer",
-        "title": "Software Engineer - Control Plane",
+        "title": "Software Engineer",
         "years": "May 2023 - January 2024",
+        "location": "New York City, NY, United States",
         "description1": "• Launched trial-based on-boarding to serve 110 new clients by building new Go endpoints, modifying relevant front-end components in React, and integrating with Datadog to track incoming requests.",
         "description2": "• Refactored the billing architecture using Airflow and Azure Blob Storage to introduce fault tolerance, data reconciliation, and retryable DAGs reducing invoice generation errors by 20%.",
-        "description3": "• Worked with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, involving the development of custom endpoints in Go and a custom usage-based billing workflow, generating $230k in top-line revenue."
+        "description3": "• Worked with Microsoft to integrate Astronomer as an Azure Native ISV service within the Azure Marketplace, involving the development of custom endpoints in Go and a custom usage-based billing workflow, generating $230k in top-line revenue.",
+        "tags": ["Go", "React", "Airflow", "Azure", "Datadog"]
       },
       {
         "company": "AWS - Managed Workflows for Apache Airflow",
