@@ -142,6 +142,7 @@
   var orbPts = null; // xyz triplets on the unit sphere
   var orbTw = null;  // per-dot twinkle frequency
   var orbPh = null;  // per-dot twinkle phase
+  var orbSp = null;  // per-dot dispersal factor (how far it flies on expand)
   var orbRot = 0;
   var orbRotX = 0;   // eased mouse steer (yaw)
   var orbTilt = 0.42;
@@ -152,6 +153,7 @@
     orbPts = new Float32Array(n * 3);
     orbTw = new Float32Array(n);
     orbPh = new Float32Array(n);
+    orbSp = new Float32Array(n);
     var ga = Math.PI * (3 - Math.sqrt(5)); // golden angle
     for (var i = 0; i < n; i++) {
       var y = 1 - (i / (n - 1)) * 2;
@@ -162,6 +164,7 @@
       orbPts[i * 3 + 2] = Math.sin(th) * r;
       orbTw[i] = rand(0.6, 2.2);
       orbPh[i] = rand(0, TAU);
+      orbSp[i] = rand(0, 1);
     }
     ORB_N = n;
   }
@@ -348,15 +351,25 @@
       ctx.fillRect(d.x, dy, d.r, d.r);
     }
 
-    // --- particle orb (hero scene, scrolls away with the page) ---
-    var sr = clamp(Math.min(W, H) * 0.24, 90, 260);
-    var sx = W < 640 ? W * 0.78 : W * 0.75;
-    var sy = H * 0.42 - scrollEased * 0.55 + Math.sin(t * 0.4) * 6;
+    // --- particle orb: scroll-choreographed ---
+    // Scrubbed to scroll position: over the first ~1.1 viewport heights the
+    // orb EXPANDS toward the center of the screen while its dots disperse
+    // outward (each by its own amount) and dissolve; scrolling back up
+    // re-assembles it. sp 0 = intact orb, sp 1 = fully dispersed.
+    var sp = clamp(scrollEased / (H * 1.1), 0, 1);
+    var ease = sp * sp * (3 - 2 * sp); // smoothstep
+    var fadeMul = 1 - clamp((sp - 0.55) / 0.45, 0, 1);
+    fadeMul *= fadeMul;
 
-    if (orbPts && sy > -sr * 1.8 && sy < H + sr * 1.8) {
+    var srBase = clamp(Math.min(W, H) * 0.24, 90, 260);
+    var sr = srBase * (1 + ease * 2.1);
+    var sx = lerp(W < 640 ? W * 0.78 : W * 0.75, W * 0.55, ease);
+    var sy = H * (0.42 + ease * 0.08) + Math.sin(t * 0.4) * 6;
+
+    if (orbPts && fadeMul > 0.004) {
       // faint halo so the cloud reads as one body
       var hg = ctx.createRadialGradient(sx, sy, sr * 0.3, sx, sy, sr * 1.9);
-      hg.addColorStop(0, 'rgba(255,255,255,0.04)');
+      hg.addColorStop(0, 'rgba(255,255,255,' + 0.04 * fadeMul + ')');
       hg.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = hg;
       ctx.beginPath();
@@ -378,6 +391,7 @@
       var cA = Math.cos(ang), sA = Math.sin(ang);
       var cT = Math.cos(orbTilt), sT = Math.sin(orbTilt);
       var L0 = -0.42, L1 = -0.5, L2 = 0.76; // key light, upper-left-front
+      var dotGrow = 1 + ease * 0.5;
 
       ctx.fillStyle = '#fff';
       for (i = 0; i < ORB_N; i++) {
@@ -389,15 +403,16 @@
         var y2 = y0 * cT - z1 * sT;
         var z2 = y0 * sT + z1 * cT;
 
-        var wob = 1 + 0.012 * Math.sin(t * orbTw[i] + orbPh[i]);
+        // breathing wobble + per-dot dispersal as the orb expands
+        var wob = 1 + 0.012 * Math.sin(t * orbTw[i] + orbPh[i]) + ease * orbSp[i] * 0.7;
         var px2 = sx + x1 * sr * wob;
         var py2 = sy + y2 * sr * wob;
 
         var front = z2 * 0.5 + 0.5;
         var ndl = x1 * L0 + y2 * L1 + z2 * L2;
         var diff = ndl > 0 ? ndl : 0;
-        var a = 0.045 + 0.6 * diff * diff + 0.16 * front;
-        var size = 0.7 + 1.5 * front;
+        var a = (0.045 + 0.6 * diff * diff + 0.16 * front) * fadeMul;
+        var size = (0.7 + 1.5 * front) * dotGrow;
 
         ctx.globalAlpha = a > 1 ? 1 : a;
         ctx.fillRect(px2, py2, size, size);
