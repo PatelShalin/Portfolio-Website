@@ -49,9 +49,9 @@ class Header extends Component {
         <div className="row banner">
           <div className="banner-text">
             {status ? (
-              <div className="hero-status">
-                <span className="pulse-dot"></span>
-                {status}
+              <div className="hero-badge">
+                <span className="yc-mark" aria-hidden="true">Y</span>
+                <span className="yc-text">{status}</span>
               </div>
             ) : null}
             <h1 className="responsive-headline">I'm {name}.</h1>

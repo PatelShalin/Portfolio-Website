@@ -132,86 +132,38 @@
   }
   var beamSprite = makeBeamSprite();
 
-  /* ---------------- ray-traced sphere ----------------
-     Orthographic camera at +z looking at a unit sphere. Per pixel:
-     lambert diffuse, sharp + broad specular, fresnel rim, and a
-     reflected studio "horizon band" — a dark chrome ball in a void. */
+  /* ---------------- particle orb ----------------
+     A big orb assembled from thousands of tiny dots: points distributed
+     on a sphere via a fibonacci spiral, slowly rotating, lit from the
+     upper-left-front. Back-side dots stay faintly visible so the whole
+     thing reads as a see-through cloud of little balls. */
 
-  var SPH_RES = 224;
-  var sphCanvas = document.createElement('canvas');
-  var sphRefl = document.createElement('canvas');
-  var sphLx = 99, sphLy = 99; // last rendered light dir (forces first render)
+  var ORB_N = 0;
+  var orbPts = null; // xyz triplets on the unit sphere
+  var orbTw = null;  // per-dot twinkle frequency
+  var orbPh = null;  // per-dot twinkle phase
+  var orbRot = 0;
+  var orbRotX = 0;   // eased mouse steer (yaw)
+  var orbTilt = 0.42;
+  var lastT = 0;
 
-  function renderSphere(lx, ly) {
-    var s = SPH_RES;
-    var len = Math.sqrt(lx * lx + ly * ly + 0.66 * 0.66);
-    var L0 = lx / len, L1 = ly / len, L2 = 0.66 / len;
-
-    sphCanvas.width = s;
-    sphCanvas.height = s;
-    var cx = sphCanvas.getContext('2d');
-    var img = cx.createImageData(s, s);
-    var data = img.data;
-
-    for (var j = 0; j < s; j++) {
-      for (var i = 0; i < s; i++) {
-        var idx = (j * s + i) * 4;
-        var x = (i + 0.5) / s * 2 - 1;
-        var y = (j + 0.5) / s * 2 - 1;
-        var r2 = x * x + y * y;
-        if (r2 > 1) { data[idx + 3] = 0; continue; }
-
-        var z = Math.sqrt(1 - r2);
-        var ndl = x * L0 + y * L1 + z * L2;
-        var diffuse = ndl > 0 ? ndl : 0;
-
-        // view reflection r = 2(n·v)n - v, v = (0,0,1)
-        var rx = 2 * z * x, ry = 2 * z * y, rz = 2 * z * z - 1;
-        var rdl = rx * L0 + ry * L1 + rz * L2;
-        var spec = rdl > 0 ? Math.pow(rdl, 120) : 0;
-        var gloss = rdl > 0 ? Math.pow(rdl, 16) : 0;
-        var fres = Math.pow(1 - z, 2.8);
-
-        // reflected studio horizon band
-        var bt = (ry + 0.18) / 0.32;
-        var band = Math.exp(-bt * bt);
-
-        var v = 0.015
-          + diffuse * 0.05
-          + band * (0.05 + 0.30 * fres)
-          + fres * 0.24
-          + gloss * 0.10
-          + spec * 0.85;
-        if (v > 1) v = 1;
-        var val = Math.round(v * 255);
-        data[idx] = val;
-        data[idx + 1] = val;
-        data[idx + 2] = val;
-
-        var edge = (1 - Math.sqrt(r2)) * s * 0.7; // anti-aliased rim
-        data[idx + 3] = Math.round(255 * clamp(edge, 0, 1));
-      }
+  function buildOrb() {
+    var n = W < 640 ? 1400 : 2800;
+    orbPts = new Float32Array(n * 3);
+    orbTw = new Float32Array(n);
+    orbPh = new Float32Array(n);
+    var ga = Math.PI * (3 - Math.sqrt(5)); // golden angle
+    for (var i = 0; i < n; i++) {
+      var y = 1 - (i / (n - 1)) * 2;
+      var r = Math.sqrt(Math.max(0, 1 - y * y));
+      var th = ga * i;
+      orbPts[i * 3] = Math.cos(th) * r;
+      orbPts[i * 3 + 1] = y;
+      orbPts[i * 3 + 2] = Math.sin(th) * r;
+      orbTw[i] = rand(0.6, 2.2);
+      orbPh[i] = rand(0, TAU);
     }
-    cx.putImageData(img, 0, 0);
-
-    // floor reflection: flipped copy fading out quickly
-    sphRefl.width = s;
-    sphRefl.height = s;
-    var rc = sphRefl.getContext('2d');
-    rc.save();
-    rc.translate(0, s);
-    rc.scale(1, -1);
-    rc.drawImage(sphCanvas, 0, 0);
-    rc.restore();
-    rc.globalCompositeOperation = 'destination-in';
-    var fade = rc.createLinearGradient(0, 0, 0, s * 0.5);
-    fade.addColorStop(0, 'rgba(0,0,0,0.32)');
-    fade.addColorStop(1, 'rgba(0,0,0,0)');
-    rc.fillStyle = fade;
-    rc.fillRect(0, 0, s, s);
-
-    sphLx = lx;
-    sphLy = ly;
+    ORB_N = n;
   }
 
   /* ---------------- scene ---------------- */
@@ -220,6 +172,7 @@
   var beams = [], bokeh = [], dust = [];
 
   function buildField() {
+    buildOrb();
     beams = [];
     bokeh = [];
     dust = [];
@@ -296,7 +249,6 @@
   var velocity = 0;
   var mouseX = -1e4, mouseY = -1e4;
   var gx = -1e4, gy = -1e4;
-  var frame = 0;
 
   function docHeight() {
     var b = document.body, d = document.documentElement;
@@ -331,16 +283,6 @@
   }
 
   /* ---------------- render loop ---------------- */
-
-  function sphereLight() {
-    // key light upper-left, nudged by the cursor
-    var lx = -0.5, ly = -0.62;
-    if (FINE_POINTER && mouseX > -1e3) {
-      lx += (mouseX / W - 0.5) * 0.7;
-      ly += (mouseY / H - 0.5) * 0.5;
-    }
-    return [clamp(lx, -1.2, 0.35), clamp(ly, -1.15, 0.2)];
-  }
 
   function drawFrame(t, energy) {
     ctx.clearRect(0, 0, W, H);
@@ -406,25 +348,60 @@
       ctx.fillRect(d.x, dy, d.r, d.r);
     }
 
-    // --- ray-traced sphere (hero scene, scrolls away with the page) ---
-    var sr = clamp(Math.min(W, H) * 0.21, 80, 225);
+    // --- particle orb (hero scene, scrolls away with the page) ---
+    var sr = clamp(Math.min(W, H) * 0.24, 90, 260);
     var sx = W < 640 ? W * 0.78 : W * 0.75;
-    var sy = H * 0.42 - scrollEased * 0.55 + Math.sin(t * 0.45) * 7;
+    var sy = H * 0.42 - scrollEased * 0.55 + Math.sin(t * 0.4) * 6;
 
-    if (sy > -sr * 2.5) {
-      // halo behind the sphere
-      var hg = ctx.createRadialGradient(sx, sy, sr * 0.4, sx, sy, sr * 2.3);
-      hg.addColorStop(0, 'rgba(255,255,255,0.05)');
+    if (orbPts && sy > -sr * 1.8 && sy < H + sr * 1.8) {
+      // faint halo so the cloud reads as one body
+      var hg = ctx.createRadialGradient(sx, sy, sr * 0.3, sx, sy, sr * 1.9);
+      hg.addColorStop(0, 'rgba(255,255,255,0.04)');
       hg.addColorStop(1, 'rgba(255,255,255,0)');
       ctx.fillStyle = hg;
       ctx.beginPath();
-      ctx.arc(sx, sy, sr * 2.3, 0, TAU);
+      ctx.arc(sx, sy, sr * 1.9, 0, TAU);
       ctx.fill();
 
       ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(sphCanvas, sx - sr, sy - sr, sr * 2, sr * 2);
-      ctx.globalAlpha = 0.9;
-      ctx.drawImage(sphRefl, sx - sr, sy + sr + 2, sr * 2, sr * 2);
+
+      // the cursor gently steers the rotation and tilt
+      var mxN = 0, myN = 0;
+      if (FINE_POINTER && mouseX > -1e3) {
+        mxN = mouseX / W - 0.5;
+        myN = mouseY / H - 0.5;
+      }
+      orbRotX = lerp(orbRotX, mxN * 0.9, 0.03);
+      orbTilt = lerp(orbTilt, 0.42 + myN * 0.4, 0.03);
+
+      var ang = orbRot + orbRotX;
+      var cA = Math.cos(ang), sA = Math.sin(ang);
+      var cT = Math.cos(orbTilt), sT = Math.sin(orbTilt);
+      var L0 = -0.42, L1 = -0.5, L2 = 0.76; // key light, upper-left-front
+
+      ctx.fillStyle = '#fff';
+      for (i = 0; i < ORB_N; i++) {
+        var i3 = i * 3;
+        var x0 = orbPts[i3], y0 = orbPts[i3 + 1], z0 = orbPts[i3 + 2];
+        // yaw around Y, then tilt around X
+        var x1 = x0 * cA + z0 * sA;
+        var z1 = z0 * cA - x0 * sA;
+        var y2 = y0 * cT - z1 * sT;
+        var z2 = y0 * sT + z1 * cT;
+
+        var wob = 1 + 0.012 * Math.sin(t * orbTw[i] + orbPh[i]);
+        var px2 = sx + x1 * sr * wob;
+        var py2 = sy + y2 * sr * wob;
+
+        var front = z2 * 0.5 + 0.5;
+        var ndl = x1 * L0 + y2 * L1 + z2 * L2;
+        var diff = ndl > 0 ? ndl : 0;
+        var a = 0.045 + 0.6 * diff * diff + 0.16 * front;
+        var size = 0.7 + 1.5 * front;
+
+        ctx.globalAlpha = a > 1 ? 1 : a;
+        ctx.fillRect(px2, py2, size, size);
+      }
       ctx.globalAlpha = 1;
     }
     ctx.globalCompositeOperation = 'source-over';
@@ -432,20 +409,17 @@
 
   function tick(now) {
     var t = now / 1000;
-    frame++;
+    var dt = lastT ? t - lastT : 0.016;
+    if (dt > 0.1) dt = 0.016;
+    lastT = t;
 
     scrollEased = lerp(scrollEased, scrollTarget, 0.07);
     velocity = lerp(velocity, scrollEased - lastEased, 0.12);
     lastEased = scrollEased;
     var energy = clamp(Math.abs(velocity) / 40, 0, 1);
 
-    // re-trace the sphere only when its light has moved enough
-    if (frame % 2 === 0) {
-      var L = sphereLight();
-      if (Math.abs(L[0] - sphLx) + Math.abs(L[1] - sphLy) > 0.012) {
-        renderSphere(L[0], L[1]);
-      }
-    }
+    // the orb spins slowly, a touch faster while scrolling
+    orbRot += dt * (0.12 + energy * 0.5);
 
     if (glow) {
       gx = lerp(gx, mouseX, 0.14);
@@ -457,7 +431,6 @@
     requestAnimationFrame(tick);
   }
 
-  renderSphere(-0.5, -0.62);
   resize();
   updateProgress();
 

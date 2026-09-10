@@ -210,33 +210,35 @@ header .banner-text hr {
   background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
 }
 
-.hero-status {
+/* clean YC badge — no pill, no pulse */
+.hero-badge {
   display: inline-block;
-  padding: 9px 18px;
-  margin-bottom: 32px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text-mid);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  margin-bottom: 34px;
 }
-.hero-status .pulse-dot {
+.hero-badge .yc-mark {
   display: inline-block;
   vertical-align: middle;
-  width: 7px;
-  height: 7px;
-  margin: -2px 10px 0 0;
-  border-radius: 50%;
-  background: #f4f4f5;
-  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-  -webkit-animation: pulse 2.4s infinite;
-  animation: pulse 2.4s infinite;
+  width: 22px;
+  height: 22px;
+  margin: -2px 11px 0 0;
+  border-radius: 4px;
+  background: #f26625;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+.hero-badge .yc-text {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--text-mid);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
 }
 
 /* staged entrance for hero children */
@@ -635,16 +637,6 @@ footer .copyright li a {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@-webkit-keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45); }
-  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-}
 @-webkit-keyframes floaty {
   0%, 100% { -webkit-transform: translateY(0); }
   50% { -webkit-transform: translateY(9px); }
@@ -674,10 +666,15 @@ footer .copyright li a {
   header .banner-text h3 {
     width: 92%;
   }
-  .hero-status {
-    font-size: 10px;
-    letter-spacing: 1.2px;
-    padding: 8px 14px;
+  .hero-badge .yc-text {
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+  }
+  .hero-badge .yc-mark {
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    font-size: 12px;
   }
   .timeline {
     padding-left: 32px;
@@ -741,7 +738,6 @@ footer .copyright li a {
   .orbjs header .banner-text > *,
   header .banner-text h1,
   header .scrolldown a,
-  .hero-status .pulse-dot,
   .timeline-item.in-view .timeline-dot:after {
     -webkit-animation: none;
     animation: none;
