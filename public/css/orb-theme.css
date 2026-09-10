@@ -12,7 +12,6 @@
   --text-hi: #f4f4f5;
   --text-mid: rgba(255, 255, 255, 0.64);
   --text-low: rgba(255, 255, 255, 0.36);
-  --chrome: linear-gradient(105deg, #8b8b94 0%, #ffffff 28%, #d8d8de 52%, #ffffff 74%, #8b8b94 100%);
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-body: 'Inter', 'opensans-regular', sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
@@ -185,14 +184,7 @@ header .banner-text h1 {
   font-weight: 400;
   letter-spacing: 0;
   text-shadow: none;
-  background: var(--chrome);
-  background-size: 240% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--text-hi);
-  -webkit-animation: chrome-sheen 14s ease-in-out infinite alternate;
-  animation: chrome-sheen 14s ease-in-out infinite alternate;
+  color: #fff;
   padding-bottom: 8px;
 }
 header .banner-text h3 {
@@ -621,14 +613,6 @@ footer .copyright li a {
 
 /* ---------------- keyframes ---------------- */
 
-@-webkit-keyframes chrome-sheen {
-  from { background-position: 0% 0; }
-  to { background-position: 100% 0; }
-}
-@keyframes chrome-sheen {
-  from { background-position: 0% 0; }
-  to { background-position: 100% 0; }
-}
 @-webkit-keyframes hero-rise {
   from { opacity: 0; -webkit-transform: translateY(24px); }
   to { opacity: 1; -webkit-transform: translateY(0); }
@@ -736,7 +720,6 @@ footer .copyright li a {
     transition: none;
   }
   .orbjs header .banner-text > *,
-  header .banner-text h1,
   header .scrolldown a,
   .timeline-item.in-view .timeline-dot:after {
     -webkit-animation: none;
